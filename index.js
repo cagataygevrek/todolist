@@ -9,6 +9,14 @@ let yapilacaklar = [];
 
 const ListeyiHazirla = () => {
   listeSec.addEventListener("submit", eklemeYap);
+  document.addEventListener("DOMContentLoaded", sayfaYenile);
+};
+
+const sayfaYenile = () => {
+  veriKontrolEt();
+  yapilacaklar.forEach((eklendi) => {
+    sayfayaEkle(eklendi);
+  });
 };
 
 let eklemeYap = (e) => {
