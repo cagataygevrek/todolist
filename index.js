@@ -14,11 +14,11 @@ const ListeyiHazirla = () => {
 let eklemeYap = (e) => {
   const inputSec = veriEkleSec.value.trim();
   if (inputSec == null || inputSec == "") {
-    uyariOlustur("warning", "içerik eklenmemiştir...");
+    uyariOlustur("warning", "içerik eklenmemiştir.");
   } else {
     sayfayaEkle(inputSec);
     veriDepola(inputSec);
-    uyariOlustur("success", "içerik kayıt edildi...");
+    uyariOlustur("success", "içerik kayıt edildi.");
   }
 
   e.preventDefault();
