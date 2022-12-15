@@ -1,9 +1,9 @@
 let listeSec = document.querySelector("#liste");
 const veriEkleSec = document.querySelector("#veriekle");
 const tumListeyiSec = document.querySelector(".list-group");
-let ilkKartSec = document.querySelectorAll(".card-body")[0];
+const ilkKartSec = document.querySelectorAll(".card-body")[0];
 let ikinciKartSec = document.querySelectorAll(".card-body")[1];
-let butonSec = document.querySelector("#clearButton");
+let butonSec = document.querySelector("#temizle");
 
 let yapilacaklar = [];
 
@@ -14,15 +14,15 @@ const ListeyiHazirla = () => {
 let eklemeYap = (e) => {
   const inputSec = veriEkleSec.value.trim();
   if (inputSec == null || inputSec == "") {
-    alert(" değer gir");
+    uyariOlustur("warning", "içerik eklenmemiştir.");
   } else {
     sayfayaEkle(inputSec);
     veriDepola(inputSec);
+    uyariOlustur("success", "içerik kayıt edildi.");
   }
 
   e.preventDefault();
 };
-ListeyiHazirla();
 
 const sayfayaEkle = (ekle) => {
   const liOlustur = document.createElement("li");
@@ -55,4 +55,17 @@ const veriKontrolEt = () => {
   } else {
     yapilacaklar = JSON.parse(localStorage.getItem("yapilacaklar"));
   }
+};
+
+ListeyiHazirla();
+
+const uyariOlustur = (type, mesaj) => {
+  let divOlustur = document.createElement("div");
+  divOlustur.className = `alert alert-${type}`;
+  divOlustur.textContent = mesaj;
+  ilkKartSec.appendChild(divOlustur);
+
+  setTimeout(() => {
+    divOlustur.remove();
+  }, 1000);
 };
